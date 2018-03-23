@@ -3,9 +3,9 @@
     "supports_noop": false,
     "description": "Automates the steps involved on installing and configuring eyaml on Puppet Enterprise",
     "parameters": {
-        "testbool": {
-            "description": "Test Boolean",
-            "type": "Boolean"
+        "path": {
+            "description": "Additional search paths",
+            "type": "String"
         }
     }
 }
