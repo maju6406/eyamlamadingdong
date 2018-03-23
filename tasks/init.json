@@ -1,7 +1,11 @@
 {
-  "puppet_task_version": 1,
-  "supports_noop": false,
-  "description": "A short description of this task",
-  "parameters": {
-  }
+    "puppet_task_version": 1,
+    "supports_noop": false,
+    "description": "Automates the steps involved on installing and configuring eyaml on Puppet Enterprise",
+    "parameters": {
+        "testbool": {
+            "description": "Test Boolean",
+            "type": "Boolean[1]"
+        }
+    }
 }

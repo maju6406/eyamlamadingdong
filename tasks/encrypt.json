@@ -1,7 +1,11 @@
 {
-  "puppet_task_version": 1,
-  "supports_noop": false,
-  "description": "A short description of this task",
-  "parameters": {
-  }
+    "puppet_task_version": 1,
+    "supports_noop": false,
+    "description": "Encrypt eyaml content",
+    "parameters": {
+        "data": {
+            "description": "The content you want to encrypt",
+            "type": "String[1]"
+        }
+    }
 }
