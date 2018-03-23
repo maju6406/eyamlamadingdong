@@ -5,7 +5,7 @@
     "parameters": {
         "testbool": {
             "description": "Test Boolean",
-            "type": "Boolean[1]"
+            "type": "Boolean"
         }
     }
 }
