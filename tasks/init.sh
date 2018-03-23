@@ -4,7 +4,7 @@ if puppet config print server | grep -v -q `hostname`; then
   exit 1
 fi
 /opt/puppetlabs/puppet/bin/puppet resource package hiera-eyaml ensure=present provider=puppet_gem
-/bin/tee -a newfile <<EOF
+/bin/tee -a /etc/puppetlabs/puppet/hiera.yaml <<EOF
   - name: "Eyaml hierarchy"
     lookup_key: eyaml_lookup_key # eyaml backend
     paths:
@@ -15,4 +15,4 @@ fi
         pkcs7_public_key: "/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem"
 EOF
 cd /etc/puppetlabs/puppet/;/opt/puppetlabs/puppet/bin/eyaml createkeys
-/opt/puppetlabs/puppet/bin/puppet agent -t
+#/opt/puppetlabs/puppet/bin/puppet agent -t
