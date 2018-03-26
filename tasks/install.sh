@@ -13,27 +13,7 @@ mv /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem "/etc/puppetlabs/puppet/keys
 cd /etc/puppetlabs/puppet/;/opt/puppetlabs/puppet/bin/eyaml createkeys
 echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
 
-if [ "$PT_configure_global_hiera" = true ] ; then
-    echo 'true1'
-    echo 'true1-1'
-fi
-
 if [ "$PT_configure_global_hiera" = "true" ] ; then
-    echo 'true2'
-    echo 'true2-2'    
-fi
-
-if [ "$PT_configure_global_hiera" = false ] ; then
-    echo 'false1'
-    echo 'false1-2'        
-fi
-
-if [ "$PT_configure_global_hiera" = "false" ] ; then
-    echo 'false2'
-    echo 'false2-2'    
-fi
-
-if ["$PT_configure_global_hiera" = "true" ] ; then
   echo "this is the value: $PT_configure_global_hiera";
   # Update hiera.yaml
   IFS=',' read -a paths <<< "${PT_paths}"
@@ -46,13 +26,7 @@ if ["$PT_configure_global_hiera" = "true" ] ; then
   today=`date +%Y-%m-%dT%H:%M:%S%z` 
   #make backup copy of existing hiera.yaml
   cp /etc/puppetlabs/puppet/hiera.yaml "/etc/puppetlabs/puppet/hiera.yaml.$today"
-  cat <<EOF > /tmp/hiera_helper.rb
-  require 'yaml'; 
-  hiera =YAML.load_file('/etc/puppetlabs/puppet/hiera.yaml');
-  hiera['hierarchy'].push({"name"=>"Eyaml hierarchy", "lookup_key"=>"eyaml_lookup_key", "paths"=>$path_str, "options"=>{"pkcs7_private_key"=>"/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem", "pkcs7_public_key"=>"/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem"}});
-  output = YAML.dump hiera
-  File.write('/etc/puppetlabs/puppet/hiera.yaml', output)
-EOF
+  echo "puts hello world" > /tmp/hiera_helper.rb
   chmod a+x /tmp/hiera_helper.rb
   /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
   echo "Updated /etc/puppetlabs/puppet/hiera.yaml file."
