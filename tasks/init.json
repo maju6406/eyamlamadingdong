@@ -5,7 +5,7 @@
     "parameters": {
         "paths": {
             "description": "Additional search paths separated by commas",
-            "type": "String"
+            "type": "Optional[String[1]]"
         }
     }
 }
