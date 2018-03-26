@@ -15,18 +15,22 @@ echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
 
 if [ "$PT_configure_global_hiera" = true ] ; then
     echo 'true1'
+    echo 'true1-1'
 fi
 
 if [ "$PT_configure_global_hiera" = "true" ] ; then
     echo 'true2'
+    echo 'true2-2'    
 fi
 
 if [ "$PT_configure_global_hiera" = false ] ; then
     echo 'false1'
+    echo 'false1-2'        
 fi
 
 if [ "$PT_configure_global_hiera" = "false" ] ; then
     echo 'false2'
+    echo 'false2-2'    
 fi
 
 if ["$PT_configure_global_hiera" = "true" ] ; then
