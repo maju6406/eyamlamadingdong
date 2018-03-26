@@ -33,4 +33,7 @@ EOF
 chmod a+x /tmp/hiera_helper.rb
 /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
 echo "Updated /etc/puppetlabs/puppet/hiera.yaml file."
+echo "Finished! Congrats!"
 rm -rf /tmp/hiera_helper.rb
+echo ""
+echo "Find out more about eyaml here: https://puppet.com/blog/encrypt-your-data-using-hiera-eyaml"
