@@ -6,6 +6,10 @@
         "paths": {
             "description": "Additional search paths separated by commas",
             "type": "Optional[String[1]]"
+        },
+        "configure_global_hiera": {
+            "description": "Configure the global hiera. Defaults to false. ",
+            "type": "Optional[Boolean]"
         }
     }
 }
