@@ -40,4 +40,5 @@ echo "Finished! Congrats!"
 if "$PT_configure_global_hiera" != 'true' 
    echo "Manual step: You will need to manually update your hiera.yaml files."
 fi
+kill -HUP `pgrep -f puppet-server`
 echo "Find out more about eyaml here: https://puppet.com/blog/encrypt-your-data-using-hiera-eyaml"
