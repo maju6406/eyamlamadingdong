@@ -12,6 +12,7 @@ mv /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem "/etc/puppetlabs/puppet/key
 mv /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem "/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem.$today"
 cd /etc/puppetlabs/puppet/;/opt/puppetlabs/puppet/bin/eyaml createkeys
 echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
+echo "$PT_configure_global_hiera"
 if "$PT_configure_global_hiera" == 'true' 
   # Update hiera.yaml
   IFS=',' read -a paths <<< "${PT_paths}"
