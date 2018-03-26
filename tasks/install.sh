@@ -12,7 +12,24 @@ mv /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem "/etc/puppetlabs/puppet/key
 mv /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem "/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem.$today"
 cd /etc/puppetlabs/puppet/;/opt/puppetlabs/puppet/bin/eyaml createkeys
 echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
-if ["$PT_configure_global_hiera" = "true" ] then
+
+if [ "$PT_configure_global_hiera" = true ] ; then
+    echo 'true1'
+fi
+
+if [ "$PT_configure_global_hiera" = "true" ] ; then
+    echo 'true2'
+fi
+
+if [ "$PT_configure_global_hiera" = false ] ; then
+    echo 'false1'
+fi
+
+if [ "$PT_configure_global_hiera" = "false" ] ; then
+    echo 'false2'
+fi
+
+if ["$PT_configure_global_hiera" = "true" ] ; then
   echo "this is the value: $PT_configure_global_hiera";
   # Update hiera.yaml
   IFS=',' read -a paths <<< "${PT_paths}"
@@ -38,7 +55,7 @@ EOF
   rm -rf /tmp/hiera_helper.rb
 fi
 echo "Finished! Congrats!"
-if ["$PT_configure_global_hiera"  = "false" ] then
+if ["$PT_configure_global_hiera"  = "false" ] ; then
   echo "Manual step: You will need to manually update your hiera.yaml files."
 fi
 #kill -HUP `pgrep -f puppet-server`
