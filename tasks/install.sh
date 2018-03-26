@@ -14,7 +14,6 @@ cd /etc/puppetlabs/puppet/;/opt/puppetlabs/puppet/bin/eyaml createkeys
 echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
 
 if [ "$PT_configure_global_hiera" = "true" ] ; then
-  echo "this is the value: $PT_configure_global_hiera";
   # Update hiera.yaml
   IFS=',' read -a paths <<< "${PT_paths}"
   path_str='["common.eyaml"'
