@@ -5,11 +5,13 @@ if puppet config print server | grep -v -q `hostname`; then
 fi
 
 #install eyaml gem
-/opt/puppetlabs/puppet/bin/puppet resource package hiera-eyaml ensure=present provider=puppet_gem
+/opt/puppetlabs/puppet/bin/puppet resource package hiera-eyaml ensure=present provider=puppet_gem &>/tmp/gem_install.log
+echo "Installed hiera-eyaml gem."
 #make backup copies of existing keys
 mv /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem "/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem.$today"
 mv /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem "/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem.$today"
 cd /etc/puppetlabs/puppet/;/opt/puppetlabs/puppet/bin/eyaml createkeys
+echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
 # Update hiera.yaml
 IFS=',' read -a paths <<< "${PT_paths}"
 path_str='["common.eyaml"'
@@ -30,5 +32,5 @@ File.write('/etc/puppetlabs/puppet/hiera.yaml', output)
 EOF
 chmod a+x /tmp/hiera_helper.rb
 /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
+echo "Updated /etc/puppetlabs/puppet/hiera.yaml file."
 rm -rf /tmp/hiera_helper.rb
-#/opt/puppetlabs/puppet/bin/puppet agent -t
