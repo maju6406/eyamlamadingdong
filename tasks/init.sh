@@ -30,4 +30,5 @@ File.write('/etc/puppetlabs/puppet/hiera.yaml', output)
 EOF
 chmod a+x /tmp/hiera_helper.rb
 /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
+rm -rf /tmp/hiera_helper.rb
 #/opt/puppetlabs/puppet/bin/puppet agent -t
