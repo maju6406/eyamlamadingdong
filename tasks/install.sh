@@ -38,8 +38,8 @@ EOF
   rm -rf /tmp/hiera_helper.rb
 fi
 echo "Finished! Congrats!"
-if ["$PT_configure_global_hiera" -eq "false" ] then
+if ["$PT_configure_global_hiera"  = "false" ] ; then
   echo "Manual step: You will need to manually update your hiera.yaml files."
 fi
-kill -HUP `pgrep -f puppet-server`
+#kill -HUP `pgrep -f puppet-server`
 echo "Find out more about eyaml here: https://puppet.com/blog/encrypt-your-data-using-hiera-eyaml"
