@@ -28,7 +28,7 @@ cp /etc/puppetlabs/puppet/hiera.yaml "/etc/puppetlabs/puppet/hiera.yaml.$today"
       - "common.eyaml"
 $path_str
     options:
-	pkcs7_private_key: "/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem"
-	pkcs7_public_key:  "/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem"
+      pkcs7_private_key: "/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem"
+      pkcs7_public_key:  "/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem"
 EOF
 #/opt/puppetlabs/puppet/bin/puppet agent -t
