@@ -3,8 +3,8 @@
     "supports_noop": false,
     "description": "Automates the steps involved on installing and configuring eyaml on Puppet Enterprise",
     "parameters": {
-        "path": {
-            "description": "Additional search paths",
+        "paths": {
+            "description": "Additional search paths separated by commas",
             "type": "String"
         }
     }
