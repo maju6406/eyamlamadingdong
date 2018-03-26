@@ -15,6 +15,7 @@ echo "eyaml keys created in /etc/puppetlabs/puppet/keys."
 echo "this is the value: $PT_configure_global_hiera"
 if ["$PT_configure_global_hiera" -eq "true" ] then
   # Update hiera.yaml
+  echo "got here true"
   IFS=',' read -a paths <<< "${PT_paths}"
   path_str='["common.eyaml"'
   for i in "${!paths[@]}"
@@ -25,6 +26,7 @@ if ["$PT_configure_global_hiera" -eq "true" ] then
   today=`date +%Y-%m-%dT%H:%M:%S%z` 
   #make backup copy of existing hiera.yaml
   cp /etc/puppetlabs/puppet/hiera.yaml "/etc/puppetlabs/puppet/hiera.yaml.$today"
+  echo "got here true2"  
   cat <<EOF > /tmp/hiera_helper.rb
   require 'yaml'; 
   hiera =YAML.load_file('/etc/puppetlabs/puppet/hiera.yaml');
@@ -34,11 +36,13 @@ if ["$PT_configure_global_hiera" -eq "true" ] then
 EOF
   chmod a+x /tmp/hiera_helper.rb
   /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
+  echo "got here true3"
   echo "Updated /etc/puppetlabs/puppet/hiera.yaml file."
   rm -rf /tmp/hiera_helper.rb
 fi
 echo "Finished! Congrats!"
 if ["$PT_configure_global_hiera" -eq "false" ] then
+  echo "got here false"
    echo "Manual step: You will need to manually update your hiera.yaml files."
 fi
 kill -HUP `pgrep -f puppet-server`
