@@ -4,11 +4,11 @@
     "description": "Automates the steps involved on installing and configuring eyaml on Puppet Enterprise",
     "parameters": {
         "paths": {
-            "description": "Additional search paths separated by commas",
+            "description": "Additional hiera search paths separated by commas. Default is just common.eyaml",
             "type": "Optional[String[1]]"
         },
         "configure_global_hiera": {
-            "description": "Configure the global hiera. Defaults to false. ",
+            "description": "Configure the global hiera. Defaults to false.",
             "type": "Optional[Boolean]"
         }
     }
