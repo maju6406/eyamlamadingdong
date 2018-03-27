@@ -25,7 +25,12 @@ if [ "$PT_configure_global_hiera" = "true" ] ; then
   today=`date +%Y-%m-%dT%H:%M:%S%z` 
   #make backup copy of existing hiera.yaml
   cp /etc/puppetlabs/puppet/hiera.yaml "/etc/puppetlabs/puppet/hiera.yaml.$today"
-  echo "puts hello world" > /tmp/hiera_helper.rb
+  rb+="require 'yaml';"
+  rb+="hiera =YAML.load_file('/etc/puppetlabs/puppet/hiera.yaml');"
+  rb+='hiera["hierarchy"].push({"name"=>"Eyaml hierarchy", "lookup_key"=>"eyaml_lookup_key", "paths"=>$path_str, "options"=>{"pkcs7_private_key"=>"/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem", "pkcs7_public_key"=>"/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem"}});'
+  rb+="output = YAML.dump hiera"
+  rb+="File.write('/etc/puppetlabs/puppet/hiera.yaml', output)"
+  echo $"$rb" >/tmp/hiera_helper.rb  
   chmod a+x /tmp/hiera_helper.rb
   /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
   echo "Updated /etc/puppetlabs/puppet/hiera.yaml file."
