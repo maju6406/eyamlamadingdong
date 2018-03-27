@@ -28,8 +28,8 @@ if [ "$PT_configure_global_hiera" = "true" ] ; then
   rb+="require 'yaml';"
   rb+="hiera =YAML.load_file('/etc/puppetlabs/puppet/hiera.yaml');"
   rb+='hiera["hierarchy"].push({"name"=>"Eyaml hierarchy", "lookup_key"=>"eyaml_lookup_key", "paths"=>$path_str, "options"=>{"pkcs7_private_key"=>"/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem", "pkcs7_public_key"=>"/etc/puppetlabs/puppet/keys/public_key.pkcs7.pem"}});'
-  rb+="output = YAML.dump hiera"
-  rb+="File.write('/etc/puppetlabs/puppet/hiera.yaml', output)"
+  rb+="output = YAML.dump hiera;"
+  rb+="File.write('/etc/puppetlabs/puppet/hiera.yaml', output);"
   echo $"$rb" >/tmp/hiera_helper.rb  
   chmod a+x /tmp/hiera_helper.rb
   /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
