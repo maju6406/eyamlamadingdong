@@ -5,7 +5,7 @@ if puppet config print server | grep -v -q `hostname`; then
 fi
 
 #install eyaml gem
-/opt/puppetlabs/puppet/bin/puppet resource package hiera-eyaml ensure=present provider=puppetserver_gem &>/tmp/gem_install.log
+/opt/puppetlabs/bin/puppetserver gem install hiera-eyaml
 echo "Installed hiera-eyaml gem."
 #make backup copies of existing keys
 mv /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem "/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem.$today"

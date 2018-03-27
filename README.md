@@ -12,7 +12,7 @@
 
 This module provides a task to set up hiera-eyaml on the master. The install task installs the hiera-eyaml gem, generate keys, optionally updates the global hiera.yaml, and restarts the puppet server. There is a separate task for encrypting hiera values. 
 
-NOTE: This task is meant to be a one-time operations. If you want to manage the keys and hieradata we recommend using Puppet Code instead of this task.
+NOTE: This task is meant to be an one-time operation. If you want to manage the keys and hieradata we recommend using Puppet Code instead of this task.
 
 ## Requirements
 This module is compatible with Puppet Enterprise and Puppet Bolt.

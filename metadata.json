@@ -1,6 +1,6 @@
 {
     "name": "beersy-hiera_eyaml_setup",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "Abir Majumdar",
     "summary": "Task for setting up hiera-eyaml",
     "license": "Apache-2.0",
