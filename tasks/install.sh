@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-if puppet config print server | grep -v -q `hostname`; then
-  echo "This task can only be run on the master node."; 
+cat /opt/puppetlabs/puppet/cache/state/classes.txt | grep -q 'puppet_enterprise::profile::master'
+if  [ $? -eq 1 ] ; then
+  echo "This task can only be run on the master node or compile master."
   exit 1
 fi
-
 #install eyaml gem
 /opt/puppetlabs/bin/puppetserver gem install hiera-eyaml
+/opt/puppetlabs/puppet/bin/gem install hiera-eyaml
 echo "Installed hiera-eyaml gem."
 #make backup copies of existing keys
 mv /etc/puppetlabs/puppet/keys/private_key.pkcs7.pem "/etc/puppetlabs/puppet/keys/private_key.pkcs7.pem.$today"
