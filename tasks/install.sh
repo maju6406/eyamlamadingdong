@@ -34,7 +34,7 @@ if [ "$PT_configure_global_hiera" = "true" ] ; then
   chmod a+x /tmp/hiera_helper.rb
   /opt/puppetlabs/puppet/bin/ruby /tmp/hiera_helper.rb
   echo "Updated /etc/puppetlabs/puppet/hiera.yaml file."
-  rm -rf /tmp/hiera_helper.rb
+  #rm -rf /tmp/hiera_helper.rb
 fi
 echo "Finished! Congrats!"
 if [ "$PT_configure_global_hiera" = "false" ] ; then
