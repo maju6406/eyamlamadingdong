@@ -5,7 +5,8 @@
     "parameters": {
         "data": {
             "description": "The content you want to encrypt",
-            "type": "Sensitive[String[1]]"
+            "type": "String[1]",
+            "sensitive": true
         }
     }
 }
